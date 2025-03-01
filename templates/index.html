@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp LLM Bot - Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #128C7E;
+            margin: 0;
+        }
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background-color: #f1f1f1;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .logout-btn:hover {
+            background-color: #ddd;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #128C7E;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .status.online {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 0.5rem;
+        }
+        .info-grid dt {
+            font-weight: bold;
+        }
+        .info-grid dd {
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WhatsApp LLM Bot Dashboard</h1>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </header>
+
+        <div class="card">
+            <h2>Bot Status</h2>
+            <span class="status online">Online</span>
+        </div>
+
+        <div class="card">
+            <h2>Configuration</h2>
+            <dl class="info-grid">
+                <dt>WhatsApp Phone ID:</dt>
+                <dd>{{ phone_id }}</dd>
+
+                <dt>Webhook Verification Token:</dt>
+                <dd>{{ webhook_token }}</dd>
+
+                <dt>Webhook URL:</dt>
+                <dd>https://{{ request.host }}/webhook</dd>
+            </dl>
+        </div>
+
+        <div class="card">
+            <h2>Usage Instructions</h2>
+            <p>Your WhatsApp bot is ready to use! Here's how to interact with it:</p>
+            <ol>
+                <li>Add your WhatsApp Business number to your contacts</li>
+                <li>Send a direct message, or...</li>
+                <li>Add the bot to a group chat and mention it with "@bot"</li>
+                <li>Example: "@bot What is the capital of France?"</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
