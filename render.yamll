@@ -18,4 +18,4 @@ services:
       - key: ADMIN_PASSWORD_HASH
         sync: false
       - key: SECRET_KEY
-        sync: false
+        sync: false 
